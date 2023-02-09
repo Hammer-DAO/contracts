@@ -3,7 +3,8 @@ const ethers = require("ethers");
 require("dotenv").config();
 
 (async () => {
-    const signer = new ethers.Wallet(process.env.PRIVATE_KEY);
+    const provier = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
+    const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provier);
     const daoCommitteeProxyAddress = "0xDD9f0cCc044B0781289Ee318e5971b0139602C26";
     const ABI = [
         "function createCandidate(string)",
